@@ -15,9 +15,6 @@ const config = {
     browserName: 'chromium'
   },
 
-
-
-
 }
 module.exports = config;
 

@@ -12,7 +12,8 @@ const config = {
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-    browserName: 'chromium'
+    browserName: 'firefox',
+    headless: false
   },
 
 }

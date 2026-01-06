@@ -1,6 +1,7 @@
 
 const { devices } = require('@playwright/test');
 
+
 const config = {
   testDir: './tests',
   timeout: 30 * 1000,
@@ -12,7 +13,7 @@ const config = {
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-    browserName: 'firefox',
+    browserName: 'chromium',
     headless: false
   },
 

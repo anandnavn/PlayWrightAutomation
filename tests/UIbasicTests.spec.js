@@ -61,3 +61,32 @@ test('Optimized Playwright test', async ({browser}) =>
     console.log(await page.title());
 
 });
+
+test('Radio/dropdown Playwright test', async ({browser}) => 
+{
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    const title = await page.title();
+    console.log(`Page title is: ${title}`);
+    await page.locator('#username').fill('rahulshettyacademy');
+    await page.locator('#password').fill('learning');
+    const userType = page.locator('.customradio').nth(1);
+    await userType.click();
+    await page.locator('#okayBtn').click();
+    const dropdown = page.locator('select.form-control');
+    await dropdown.selectOption('consult');
+//validation check for radio button selection
+    await expect(userType.isChecked()).toBeTruthy();
+    const termsBox = page.locator('#terms');
+    await termsBox.check();
+    
+//validation/assertions for checkbox
+    await expect(termsBox).toBeChecked();
+    await termsBox.uncheck();
+    await expect(termsBox).not.toBeChecked();
+    await page.locator('#signInBtn').click();
+    
+    
+});

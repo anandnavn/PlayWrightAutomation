@@ -1,7 +1,7 @@
 
 const {test} = require('@playwright/test');
 
-test.only('Playwright Assignment test', async ({browser}) =>
+test('Playwright Assignment test', async ({browser}) =>
 {
 
   const context = await browser.newContext();
@@ -28,7 +28,8 @@ test.only('Playwright Assignment test', async ({browser}) =>
     await page.locator('#userPassword').fill(password);
     await page.locator("#login").click();   
 
-    //get first product after successful login
+    //get first product after successful login #synchronization using nth(0) for all products
+    await page.waitForLoadState('networkidle');
     console.log(await page.locator(".card-body b").nth(0).textContent());
     console.log(await page.locator(".card-body b").allTextContents());
 
